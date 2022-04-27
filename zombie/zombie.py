@@ -3,23 +3,23 @@
 ###   PyGame with a SnowPea shoot bullet for defensing the zombie army coming            ###
 ###                                                                                      ###
 ###   Author: Junjie Shi                                                                 ###
-###   Email : handsomestone@gmail.com                                                    ### 
-###                                                                                      ### 
+###   Email : handsomestone@gmail.com                                                    ###
+###                                                                                      ###
 ###   Do Enjoy the game!                                                                 ###
 ###   You need to have Python and PyGame installed to run it.                            ###
 ###   Run it by typing "python zombie.py" in the terminal                                ###
-###                                                                                      ### 
-###   This program is free software: you can redistribute it and/or modify               ### 
-###   it under the terms of the GNU General Public License as published by               ### 
-###   the Free Software Foundation, either version 3 of the License, or                  ### 
-###   (at your option) any later version.                                                ### 
-###                                                                                      ### 
-###   This program is distributed in the hope that it will be useful,                    ### 
-###   but WITHOUT ANY WARRANTY; without even the implied warranty of                     ### 
-###   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the                      ### 
-###   GNU General Public License for more details.                                       ### 
-###                                                                                      ### 
-###   You should have received a copy of the GNU General Public License                  ### 
+###                                                                                      ###
+###   This program is free software: you can redistribute it and/or modify               ###
+###   it under the terms of the GNU General Public License as published by               ###
+###   the Free Software Foundation, either version 3 of the License, or                  ###
+###   (at your option) any later version.                                                ###
+###                                                                                      ###
+###   This program is distributed in the hope that it will be useful,                    ###
+###   but WITHOUT ANY WARRANTY; without even the implied warranty of                     ###
+###   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the                      ###
+###   GNU General Public License for more details.                                       ###
+###                                                                                      ###
+###   You should have received a copy of the GNU General Public License                  ###
 ###   along with this program.  If not, see <http://www.gnu.org/licenses/>.              ###                                                                              ###
 ###                                                                                      ###
 ############################################################################################
@@ -166,7 +166,7 @@ while True:
                     moveUp = False
                 if event.key == K_DOWN or event.key == ord('s'):
                     moveDown = False
-                
+
                 if event.key == K_SPACE:
                     shoot = False
 
@@ -174,7 +174,7 @@ while True:
         zombieAddCounter += 1
         if zombieAddCounter == ADDNEWKINDZOMBIE:
             zombieAddCounter = 0
-            zombieSize = ZOMBIESIZE       
+            zombieSize = ZOMBIESIZE
             newZombie = {'rect': pygame.Rect(WINDOWWIDTH, random.randint(10,WINDOWHEIGHT-zombieSize-10), zombieSize, zombieSize),
                         'surface':pygame.transform.scale(zombieImage, (zombieSize, zombieSize)),
                         }
@@ -229,21 +229,21 @@ while True:
             if c['rect'].left <0:
                 newKindZombies.remove(c)
                 zombiesGottenPast += 1
-		
+
 		for b in bullets[:]:
-			if b['rect'].right>WINDOWWIDTH:
-				bullets.remove(b)
-				
+	      if b['rect'].right>WINDOWWIDTH:
+		    bullets.remove(b)
+
         # check if the bullet has hit the zombie
         for z in zombies:
             if bulletHasHitZombie(bullets, zombies):
                 score += 1
                 zombies.remove(z)
-    
+
         for c in newKindZombies:
             if bulletHasHitCrawler(bullets, newKindZombies):
                 score += 1
-                newKindZombies.remove(c)      
+                newKindZombies.remove(c)
 
         # Draw the game world on the window.
         windowSurface.blit(rescaledBackground, (0, 0))
@@ -268,13 +268,13 @@ while True:
 
         # update the display
         pygame.display.update()
-            
+
         # Check if any of the zombies has hit the player.
         if playerHasHitZombie(playerRect, zombies):
             break
         if playerHasHitZombie(playerRect, newKindZombies):
            break
-        
+
         # check if score is over MAXGOTTENPASS which means game over
         if zombiesGottenPast >= MAXGOTTENPASS:
             break
